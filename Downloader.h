@@ -17,7 +17,6 @@
 class Downloader {
 private:
     std::string _url;
-//  std::string _outfilename;
     long _total_download_bytes;
 public:
     Downloader(std::string name = "http://demo.castlabs.com/tmp/text0.mp4") : _url(name),_total_download_bytes(0) {}
@@ -25,11 +24,5 @@ public:
     void stopDownload() {}
     void pauseDownload() {}
     void restartDownload() {}
-/*
-    std::string getOutputFilename() 
-    {
-	return _outfilename;	
-    }
-*/
 };
 #endif /* Download_h */

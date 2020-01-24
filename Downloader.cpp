@@ -7,7 +7,6 @@ long Downloader::startDownload(std::vector<char> &downloadBuffer)
 	CURL *curl;
 	CURLcode res;
 	std::string url{_url};
-	//      std::ofstream outfilename (_outfilename,std::ios::binary);
 	static long total_download_bytes = 0;
 	curl = curl_easy_init();
 	if (curl)
@@ -16,18 +15,15 @@ long Downloader::startDownload(std::vector<char> &downloadBuffer)
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION,
 		+[](char *ptr, size_t size, size_t nmemb, void *userdata)
 			{
-			    //std::ofstream *out = static_cast<std::ofstream *>(userdata);
 			    std::vector<char> *out = static_cast<std::vector<char> *>(userdata);
 			    size_t nbytes = size * nmemb;
 			    total_download_bytes += nbytes;
-			    //out->write(ptr, nbytes);
 			    for(int i = 0;i < nbytes;i++)
 				(*out).push_back(ptr[i]);
 			    return nbytes;
 			}
 		);
 		curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
-		//curl_easy_setopt(curl, CURLOPT_WRITEDATA, &outfilename);
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &downloadBuffer);
 		res = curl_easy_perform(curl);
 		curl_easy_cleanup(curl);
