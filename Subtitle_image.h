@@ -3,7 +3,6 @@
 //  mp4parse
 //
 //  Created by Bibin Baby on 22/01/20.
-//  Reference B64 decoding : https://stackoverflow.com/questions/46349697/decode-base64-string-using-boost
 //
 
 #ifndef Subtitle_image_h
